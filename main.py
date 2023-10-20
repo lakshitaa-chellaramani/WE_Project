@@ -20,8 +20,36 @@ model = tensorflow.keras.Sequential([
     model,
     GlobalMaxPooling2D()
 ])
+st.markdown(
+    """
+    <style>
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1682687218904-de46ed992b58?auto=format&fit=crop&q=80&w=1543&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
 
-st.title('Fashion Recommender System')
+        .hero h1 {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+        }
+    </style>
+    <div class="hero">
+        <h1>Fashion System</h1>
+        <p>Discover the latest trends in fashion and find recommendations based on image features.</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.title('Fashion  System')
+st.button('Click me')
 
 def save_uploaded_file(uploaded_file):
     try:
@@ -63,7 +91,7 @@ if uploaded_file is not None:
         # recommendention
         indices = recommend(features,feature_list)
         # show
-        col1,col2,col3,col4,col5 = st.beta_columns(5)
+        col1,col2,col3,col4,col5 = st.columns(5)
 
         with col1:
             st.image(filenames[indices[0][0]])
